@@ -1,2 +1,76 @@
-<p>game-detail works!</p>
-<p>{{gameId}}</p>
+<div *ngIf="(game | json) != '{}'; else elseBlock">
+    <div class="mx-auto mt-8 max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+        <div class="lg:grid lg:auto-rows-min lg:grid-cols-12 lg:gap-x-8">
+          <div class="lg:col-span-5 lg:col-start-8">
+            <div class="flex justify-between">
+              <h1 class="text-xl font-medium text-gray-900">{{game.name}}</h1>
+              <div *ngIf="game.price > 0; else elseBlock">
+                <p class="text-xl font-medium text-gray-900">
+                    €{{game.price}}
+                </p>
+            </div>
+            <ng-template #elseBlock>
+                <p class="text-xl font-medium text-gray-900">
+                    FREE
+                </p>
+            </ng-template>
+            </div>
+          </div>
+  
+          <!-- Image gallery -->
+          <div class="mt-8 lg:col-span-7 lg:col-start-1 lg:row-span-3 lg:row-start-1 lg:mt-0">
+            <h2 class="sr-only">Images</h2>
+  
+            <div class="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-3 lg:gap-8">
+              <img src= {{game.imageURL}} alt="Back of women&#039;s Basic Tee in black." class="lg:col-span-2 lg:row-span-2 rounded-lg">
+            </div>
+          </div>
+  
+          <div class="mt-8 lg:col-span-5">
+              <button class="mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Add to cart</button>
+  
+            <!-- Product details -->
+            <div class="mt-10">
+              <h2 class="text-sm font-medium text-gray-900">Description</h2>
+  
+              <div class="prose prose-sm mt-4 text-gray-500">
+                <p>{{game.description}}</p>
+              </div>
+            </div>
+  
+            <div class="mt-8 border-t border-gray-200 pt-8">
+              <h2 class="text-sm font-medium text-gray-900">
+                Game information
+              </h2>
+  
+              <div class="prose prose-sm mt-4 text-gray-500">
+                <ul role="list">
+                  <li><span class="text-black">Developer:</span> {{game.developer}}</li>
+  
+                  <li><span class="text-black">Genre:</span> {{game.genre}}</li>
+  
+                  <li><span class="text-black">Platform:</span> {{game.platform}}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<ng-template #elseBlock>
+    <main class="mx-auto w-full flex max-w-7xl flex-grow flex-col px-4 sm:px-6 lg:px-8">
+        <div class="my-auto mx-auto flex-shrink-0 py-16 sm:py-32">
+          <p class="text-base font-semibold text-indigo-600">404</p>
+          <h1 class="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">Game not found</h1>
+          <p class="mt-2 text-base text-gray-500">Sorry, we couldn’t find the game you’re looking for.</p>
+          <div class="mt-6">
+            <a href="#" class="text-base font-medium text-indigo-600 hover:text-indigo-500">
+              Go back home
+              <span aria-hidden="true"> &rarr;</span>
+            </a>
+          </div>
+        </div>
+      </main>
+</ng-template>

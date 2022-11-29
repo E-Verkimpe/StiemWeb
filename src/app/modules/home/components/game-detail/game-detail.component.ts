@@ -1,5 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { GameDto } from '../../Models/game-dto';
+import { GameService } from '../../services/game.service';
 
 @Component({
   selector: 'app-game-detail',
@@ -9,14 +12,20 @@ import { ActivatedRoute } from '@angular/router';
 export class GameDetailComponent implements OnInit {
   public gameId: number = 0;
 
-  constructor(route: ActivatedRoute) {
-    route.params.subscribe((params) => {
-      this.gameId = params["id"];
-    });
-    }
+  public game = {} as GameDto;
+
+  constructor(private service: GameService, private route: ActivatedRoute) {}
   
 
   ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      this.gameId = params["id"];
+    });
+
+    this.service.GetSingleGame(this.gameId).subscribe(
+      (result: GameDto) => (this.game = result),
+      (e: Error) => console.error(e.message),
+      );
   }
 
 }
