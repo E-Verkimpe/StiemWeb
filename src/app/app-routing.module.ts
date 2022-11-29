@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { GameListComponent } from './modules/home/components/game-list/game-list.component';
+import { HomeComponent } from './modules/home/home.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: GameListComponent,
+    path: 'home',
+    component: HomeComponent,
     children: [
       {
         path: '',
@@ -13,7 +14,7 @@ const routes: Routes = [
       },
     ],
   },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
+  { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
 
 @NgModule({
