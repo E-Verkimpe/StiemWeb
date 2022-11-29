@@ -15,4 +15,8 @@ export class GameService {
   public GetGames(): Observable<GameDto[]>{
     return this.client.get<GameDto[]>(`${environment.apiUrl}/${this.url}`)
   }
+
+  public GetSingleGame(id: number): Observable<GameDto>{
+    return this.client.get<GameDto>(`${environment.apiUrl}/${this.url}/${id}`)
+  }
 }
