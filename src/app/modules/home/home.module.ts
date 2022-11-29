@@ -5,13 +5,15 @@ import { HomeRoutingModule } from './home-routing.module';
 import { GameListComponent } from './components/game-list/game-list.component';
 import { GameDetailComponent } from './components/game-detail/game-detail.component';
 import { HomeComponent } from './home.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 @NgModule({
   declarations: [
     GameListComponent,
     GameDetailComponent,
-    HomeComponent
+    HomeComponent,
+    NavbarComponent
   ],
   imports: [
     CommonModule,

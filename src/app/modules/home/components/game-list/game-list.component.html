@@ -2,7 +2,8 @@
     <div *ngFor="let game of games">
         <div class="relative">
             <div class="relative h-72 w-full overflow-hidden rounded-lg">
-                <a (click)="NavToGameDetail(game.gameID)"><img src={{game.imageURL}} alt={{game.description}} class="h-full w-full object-cover object-center hover:h-screen">
+                <a (click)="NavToGameDetail(game.gameID)">
+                    <img src={{game.imageURL}} alt={{game.description}} class="h-full w-full object-cover object-center hover:grayscale">
                 </a>
 
             </div>
