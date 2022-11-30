@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
+  public activeUser: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
+    if (sessionStorage.getItem('accesToken') !== null){
+      this.activeUser = true;
+    }
   }
 
 }
