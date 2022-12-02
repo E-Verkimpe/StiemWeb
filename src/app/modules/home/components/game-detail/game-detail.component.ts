@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GameDto } from '../../Models/game-dto';
+import { CartService } from '../../services/cart.service';
 import { GameService } from '../../services/game.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class GameDetailComponent implements OnInit {
 
   public game = {} as GameDto;
 
-  constructor(private service: GameService, private route: ActivatedRoute) {}
+  constructor(private service: GameService, private route: ActivatedRoute, private cartService: CartService) {}
   
 
   ngOnInit(): void {
@@ -26,6 +27,10 @@ export class GameDetailComponent implements OnInit {
       (result: GameDto) => (this.game = result),
       (e: Error) => console.error(e.message),
       );
+  }
+
+  public AddToCart(){
+    this.cartService.AddToCart(this.gameId);
   }
 
 }

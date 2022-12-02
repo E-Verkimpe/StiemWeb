@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GameDto } from '../../Models/game-dto';
+import { CartService } from '../../services/cart.service';
 import { GameService } from '../../services/game.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { GameService } from '../../services/game.service';
 export class GameListComponent implements OnInit {
   public games: GameDto[] = [];
 
-  constructor(private gameService: GameService, private router: Router) { }
+  constructor(private gameService: GameService, private router: Router, private cartService: CartService) { }
 
   ngOnInit(): void {
     this.gameService.GetGames().subscribe(
@@ -21,6 +22,10 @@ export class GameListComponent implements OnInit {
 
   public NavToGameDetail(id: number){
     this.router.navigate(["/home/game/" + id])
+  }
+
+  public AddToCart(gameID: number){
+    this.cartService.AddToCart(gameID);
   }
 
 }
