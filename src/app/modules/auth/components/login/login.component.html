@@ -1,0 +1,53 @@
+<div class="mx-auto w-full max-w-sm lg:w-96">
+    <div>
+      <h2 class="mt-6 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Sign in to your account</h2>
+      <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
+        Or
+        <a routerLink="/auth/register" class="font-medium text-primary-600 hover:text-primary-500">create an account</a>
+      </p>
+    </div>
+    <div class="mt-8">
+      <div class="mt-6">
+        <form [formGroup]="loginForm" (ngSubmit)="submit()" class="space-y-6">
+          <div class="form-group">
+            <label for="userInput" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Username</label>
+            <div class="mt-1">
+              <input
+                formControlName="username"
+                id="userInput"
+                type="text"
+                placeholder="User123"
+                class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-primary-500 sm:text-sm"
+              />
+            </div>
+          </div>
+          <div class="space-y-1">
+            <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Password</label>
+            <div class="mt-1">
+              <input
+                formControlName="password"
+                id="password"
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                placeholder="••••••••"
+                class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-primary-500 sm:text-sm"
+              />
+            </div>
+          </div>
+          <div>
+            <button
+              type="submit" [disabled]="!loginForm.valid"
+              class="flex w-full justify-center rounded-md border border-transparent bg-gray-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-700 disabled:bg-transparent disabled:border-black"
+            >
+              Sign in
+            </button>
+            <div *ngIf="!loginForm.valid">
+              <p>Please fill out the form</p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

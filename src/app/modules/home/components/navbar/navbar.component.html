@@ -1,0 +1,25 @@
+<header class="bg-stone-100 shadow-sm h-14">
+  <div class="mx-auto  px-4 sm:px-6 lg:px-8">
+    <div class="relative flex justify-between h-12 px-3 py-2">
+      <div class="flex ">
+        <div class="flex flex-shrink-0 items-center">
+          <a routerLink="/home/games">
+            <img class="block h-8 w-auto hover:scale-110"
+              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="home">
+          </a>
+        </div>
+      </div>
+      <div *ngIf="!activeUser; else elseBlock" class="flex items-center justify-end col-span-4 p-4">
+        <a routerLink="/auth/login"
+          class="ml-6 inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Login</a>
+        <a routerLink="/auth/register"
+          class="ml-6 inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Register</a>
+      </div>
+      <ng-template #elseBlock>
+        <a routerLink="/home/games">
+          <img src="https://img.icons8.com/ios-glyphs/512/shopping-cart.png" alt="shopping cart" class="block h-8 w-auto hover:scale-110">
+        </a>
+      </ng-template>
+    </div>
+  </div>
+</header>

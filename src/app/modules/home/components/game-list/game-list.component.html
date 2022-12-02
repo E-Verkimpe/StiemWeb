@@ -1,8 +1,9 @@
-<div class="mt-8 mx-10 grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
+<div class="mt-8 mx-10 grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8 xxl:grid-cols-5 bg-inherit">
     <div *ngFor="let game of games">
         <div class="relative">
             <div class="relative h-72 w-full overflow-hidden rounded-lg">
-                <a (click)="NavToGameDetail(game.gameID)"><img src={{game.imageURL}} alt={{game.description}} class="h-full w-full object-cover object-center hover:h-screen">
+                <a (click)="NavToGameDetail(game.gameID)">
+                    <img src={{game.imageURL}} alt={{game.description}} class="h-full w-full object-cover object-center hover:scale-110 cursor-pointer">
                 </a>
 
             </div>
@@ -26,8 +27,8 @@
             </div>
         </div>
         <div class="mt-6">
-            <a
-                class="relative flex items-center justify-center rounded-md border border-transparent bg-gray-100 py-2 px-8 text-sm font-medium text-gray-900 hover:bg-gray-200">Add
+            <a (click)="AddToCart(game.gameID)"
+                class="relative flex items-center justify-center rounded-md border border-transparent bg-gray-200 py-2 px-8 text-sm font-medium text-gray-900 hover:bg-gray-300">Add
                 to bag</a>
         </div>
     </div>
