@@ -29,8 +29,8 @@ export class GameDetailComponent implements OnInit {
       );
   }
 
-  public AddToCart(){
-    this.cartService.AddToCart(this.gameId);
+  public AddToCart(id: number){
+    this.cartService.AddToCart(id);
   }
 
 }

@@ -6,6 +6,7 @@ import { GameListComponent } from './components/game-list/game-list.component';
 import { GameDetailComponent } from './components/game-detail/game-detail.component';
 import { HomeComponent } from './home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { CartListComponent } from './components/cart-list/cart-list.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     GameListComponent,
     GameDetailComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    CartListComponent
   ],
   imports: [
     CommonModule,

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { CartOverviewDto } from '../Models/CartOverview-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -12,17 +13,26 @@ export class CartService {
 
   constructor(private client: HttpClient, private router: Router) { }
 
-  public AddToCart(gameID: number){
-    if(!this.IsLoggedIn()){
+  public AddToCart(gameID: number) {
+    if (!this.IsLoggedIn()) {
       this.router.navigate(['/auth/login']);
     }
-    else{
+    else {
       this.client.post(`${environment.apiUrl}/${this.url}`, gameID).subscribe();
     }
   }
 
-  private IsLoggedIn(): boolean{
-    if (sessionStorage.getItem('accesToken') !== null){
+  public GetGamesInCart(): Observable<CartOverviewDto> {
+    
+    return this.client.get<CartOverviewDto>(`${environment.apiUrl}/${this.url}`);
+  }
+
+  public RemoveSingleGame(gameID: number) {
+    this.client.delete(`${environment.apiUrl}/${this.url}/${gameID}`).subscribe();
+  }
+
+  private IsLoggedIn(): boolean {
+    if (sessionStorage.getItem('accesToken') !== null) {
       return true;
     }
     else return false;

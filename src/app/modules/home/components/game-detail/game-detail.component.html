@@ -22,12 +22,12 @@
             <h2 class="sr-only">Images</h2>
   
             <div class="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-3 lg:gap-8">
-              <img src= {{game.imageURL}} alt="Back of women&#039;s Basic Tee in black." class="lg:col-span-2 lg:row-span-2 rounded-lg">
+              <img src= {{game.imageURL}} alt="Game Splash art" class="lg:col-span-2 lg:row-span-2 rounded-lg">
             </div>
           </div>
   
           <div class="mt-8 lg:col-span-5">
-              <button (click)="AddToCart()" class="mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Add to cart</button>
+              <button (click)="AddToCart(game.gameID)" class="mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-primary-500 py-3 px-8 text-base font-medium text-white hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">Add to cart</button>
   
             <!-- Product details -->
             <div class="mt-10">
@@ -45,11 +45,11 @@
   
               <div class="prose prose-sm mt-4 text-gray-500">
                 <ul role="list">
-                  <li><span class="text-black">Developer:</span> {{game.developer}}</li>
+                  <li><span class="text-primary-600 font-bold">Developer:</span> {{game.developer}}</li>
   
-                  <li><span class="text-black">Genre:</span> {{game.genre}}</li>
+                  <li><span class="text-primary-600 font-bold">Genre:</span> {{game.genre}}</li>
   
-                  <li><span class="text-black">Platform:</span> {{game.platform}}</li>
+                  <li><span class="text-primary-600 font-bold">Platform:</span> {{game.platform}}</li>
                 </ul>
               </div>
             </div>
