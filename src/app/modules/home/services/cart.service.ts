@@ -27,8 +27,12 @@ export class CartService {
     return this.client.get<CartOverviewDto>(`${environment.apiUrl}/${this.url}`);
   }
 
-  public RemoveSingleGame(gameID: number) {
-    this.client.delete(`${environment.apiUrl}/${this.url}/${gameID}`).subscribe();
+  public RemoveSingleGame(gameID: number): Observable<Object> {
+    return this.client.delete(`${environment.apiUrl}/${this.url}/${gameID}`);
+  }
+
+  public ClearCart(): Observable<Object>{
+    return this.client.delete(`${environment.apiUrl}/${this.url}`);
   }
 
   private IsLoggedIn(): boolean {

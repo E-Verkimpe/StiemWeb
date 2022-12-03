@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { tap } from 'rxjs/operators';
 import { CartOverviewDto } from '../../Models/CartOverview-dto';
 import { CartService } from '../../services/cart.service';
 
@@ -22,8 +23,15 @@ export class CartListComponent implements OnInit {
   }
 
   RemoveSingleGame(id: number){
-    this.cartService.RemoveSingleGame(id);
-    this.GetGamesInCart();
+    this.cartService.RemoveSingleGame(id).pipe(
+        tap(() => this.GetGamesInCart())
+    ).subscribe();
+  }
+
+  ClearCart(){
+    this.cartService.ClearCart().pipe(
+      tap(() => this.GetGamesInCart())
+  ).subscribe();
   }
 
 }
