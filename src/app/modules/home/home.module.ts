@@ -7,6 +7,8 @@ import { GameDetailComponent } from './components/game-detail/game-detail.compon
 import { HomeComponent } from './home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CartListComponent } from './components/cart-list/cart-list.component';
+import { SearchComponent } from './components/search/search.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,11 +17,14 @@ import { CartListComponent } from './components/cart-list/cart-list.component';
     GameDetailComponent,
     HomeComponent,
     NavbarComponent,
-    CartListComponent
+    CartListComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class HomeModule { }

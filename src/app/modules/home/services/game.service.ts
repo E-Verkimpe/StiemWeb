@@ -16,7 +16,12 @@ export class GameService {
     return this.client.get<GameDto[]>(`${environment.apiUrl}/${this.url}`)
   }
 
+  public Search(term: string): Observable<GameDto[]>{
+    return this.client.get<GameDto[]>(`${environment.apiUrl}/${this.url}/search/${term}`)
+  }
+
   public GetSingleGame(id: number): Observable<GameDto>{
     return this.client.get<GameDto>(`${environment.apiUrl}/${this.url}/${id}`)
   }
+
 }

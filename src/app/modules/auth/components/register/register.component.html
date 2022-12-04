@@ -43,9 +43,9 @@
                 </div>
                 <div>
                     <div *ngIf="!registerForm.valid">
-                        <p class="text-red-900 text-center pb-3">Please fill out the form</p>
+                        <p class="text-red-900 font-bold text-center pb-3">Please fill out the form</p>
                     </div>
-                    <div *ngIf="error" class="text-center text-red-900 pb-3">
+                    <div *ngIf="error" class="text-center text-red-900 font-bold pb-3">
                         {{error}}
                     </div>
                     <button type="submit" [disabled]="!registerForm.valid"
