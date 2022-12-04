@@ -7,25 +7,26 @@
         <button (click)="ClearCart()" type="button" class="inline-flex items-center justify-center rounded-md border border-transparent bg-primary-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 sm:w-auto">Clear Cart</button>
       </div>
     </div>
-    <div class="-mx-4 mt-8 flex overflow-x-auto flex-col sm:-mx-6 md:mx-0">
+    <div *ngIf="cart.games; else elseBlock" class="-mx-4 mt-8 flex overflow-x-auto flex-col sm:-mx-6 md:mx-0">
       <table class="min-w-full divide-y divide-gray-300">
         <thead>
           <tr>
+            <th scope="col" class="py-3.5 pl-4 pr-3 text-center text-sm font-semibold text-gray-900 sm:pl-6 md:pl-0">#</th>
             <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6 md:pl-0">Game</th>
-          
             <th scope="col" class="py-3.5 px-3 text-right text-sm font-semibold text-gray-900">Platform</th>
             <th scope="col" class="py-3.5 px-3 text-right text-sm font-semibold text-gray-900">Price</th>
-            <th scope="col" class="py-3.5 pl-3 pr-4 text-right text-sm font-semibold text-gray-900 sm:pr-6 md:pr-0">Remove</th>
+            <th scope="col" class="py-3.5 pl-3 pr-4 text-center text-sm font-semibold text-gray-900 sm:pr-6 md:pr-0">Remove</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let game of cart.games" class="border-b border-gray-200">
+          <tr *ngFor="let game of cart.games; let i = index" class="border-b border-gray-200">
+            <td class="py-3.5 pl-4 pr-3 text-center text-sm text-gray-900 sm:pl-6 md:pl-0">{{i}}</td>
             <td class="py-4 pl-4 pr-3 text-sm sm:pl-6 md:pl-0">
               <div class="font-medium text-gray-900">{{game.name}}</div>
             </td>
             <td class="py-4 px-3 text-right text-sm text-gray-500">{{game.platform}}</td>
             <td class="py-4 px-3 text-right text-sm text-gray-500">€{{game.price}}</td>
-            <td class="py-4 pl-3 pr-8 text-right text-xl text-red-700 sm:pr-6 font-bold"><a (click)="RemoveSingleGame(game.gameID)" class="cursor-pointer">x</a></td>
+            <td class="py-3.5 pl-3 pr-4 text-center text-xl text-red-700 sm:pr-6 md:pr-0 font-bold"><a (click)="RemoveSingleGame(game.gameID)" class="cursor-pointer">x</a></td>
           </tr>
         </tbody>
         <tfoot>
@@ -36,5 +37,9 @@
         </tfoot>
       </table>
     </div>
+    <ng-template #elseBlock >
+      <img class="mx-auto" src="https://i.kym-cdn.com/photos/images/original/001/043/243/419.gif" alt="">
+      <p class="text-center py-2 font-bold">No games found</p>
+    </ng-template>
   </div>
   

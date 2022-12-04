@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { LoginDto } from '../models/login-dto';
+import { RegisterDto } from '../models/register-dto';
 import { TokenDto } from '../models/token-dto';
 
 @Injectable({
@@ -20,7 +21,12 @@ export class AuthService {
         this.router.navigate(['']);
       })
     );
+  }
 
+  register(model: RegisterDto){
+    return this.client
+      .post(`${environment.apiUrl}/auth/register`, model)
+      .pipe(tap(() => this.router.navigate(['auth/login'])));
   }
 
 }

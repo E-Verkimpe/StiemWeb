@@ -14,12 +14,16 @@ export class LoginComponent implements OnInit {
     password: ['', [Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"), Validators.required]],
   });
 
+  error: string = '';
   constructor(private authService: AuthService, private fb: FormBuilder) {}
 
   submit() {
     if (!this.loginForm.valid) return;
     const values = this.loginForm.getRawValue();
-    this.authService.login({ username: values.username!, password: values.password! }).subscribe();
+    this.authService.login({ username: values.username!, password: values.password! }).subscribe(
+      (resp) => {},
+      (err) => {this.error = err.error.message}
+    );
   }
 
   ngOnInit(): void {

@@ -1,1 +1,59 @@
-<p>register works!</p>
+<div class="mx-auto w-full max-w-sm lg:w-96">
+    <div>
+        <h2 class="mt-6 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Create your account</h2>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
+            Or
+            <a routerLink="/auth/login" class="font-medium text-primary-500 hover:text-primary-600">sign in to your account</a>
+        </p>
+    </div>
+    <div class="mt-8">
+        <div class="mt-6">
+            <form [formGroup]="registerForm" (ngSubmit)="submit()" class="space-y-6">
+                <div class="space-y-1">
+                    <label for="userInput"
+                        class="block text-sm font-medium text-gray-700 dark:text-gray-200">Username</label>
+                    <input 
+                        formControlName="username" 
+                        id="userInput" 
+                        type="text" 
+                        placeholder="User123"
+                        class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-primary-500 sm:text-sm" />
+                </div>
+                <div class="space-y-1">
+                    <label for="email"
+                        class="block text-sm font-medium text-gray-700 dark:text-gray-200">Email</label>
+                    <input 
+                        formControlName="email" 
+                        id="email" 
+                        type="email" 
+                        placeholder="example@domain.com"
+                        class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-primary-500 sm:text-sm" />
+                </div>
+                <div class="space-y-1">
+                    <label for="password"
+                        class="block text-sm font-medium text-gray-700 dark:text-gray-200">Password</label>
+                    <input 
+                        formControlName="password" 
+                        id="password" 
+                        name="password" 
+                        type="password"
+                        autocomplete="new-password" 
+                        placeholder="••••••••"
+                        class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-primary-500 sm:text-sm" />
+                </div>
+                <div>
+                    <div *ngIf="!registerForm.valid">
+                        <p class="text-red-900 text-center pb-3">Please fill out the form</p>
+                    </div>
+                    <div *ngIf="error" class="text-center text-red-900 pb-3">
+                        {{error}}
+                    </div>
+                    <button type="submit" [disabled]="!registerForm.valid"
+                        class="flex w-full justify-center rounded-md border border-transparent bg-primary-500 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-primary-600 disabled:bg-transparent disabled:border-black">
+                        Sign up
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
