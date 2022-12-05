@@ -35,7 +35,7 @@ export class CartService {
     return this.client.delete(`${environment.apiUrl}/${this.url}`);
   }
 
-  private IsLoggedIn(): boolean {
+  public IsLoggedIn(): boolean {
     if (sessionStorage.getItem('accesToken') !== null) {
       return true;
     }

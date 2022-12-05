@@ -10,11 +10,15 @@ import { CartService } from '../../services/cart.service';
 })
 export class CartListComponent implements OnInit {
   cart = {} as CartOverviewDto;
+  isLoggedIn: boolean = false;
 
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.GetGamesInCart();
+    this.isLoggedIn = this.cartService.IsLoggedIn()
+    if (this.isLoggedIn){
+      this.GetGamesInCart();
+    }
   }
 
   GetGamesInCart(){
