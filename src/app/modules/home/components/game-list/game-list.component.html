@@ -1,9 +1,18 @@
-<div class="mt-8 mx-10 grid grid-cols-1 gap-y-12 md:grid-cols-2 sm:gap-x-6 xl:grid-cols-3 2xl:grid-cols-4">
+<app-not-found [visible]="games.length <= 0 && !searched" message="Sorry, we couldn't load any games.
+    Please try again later" buttonText="">
+</app-not-found>
+
+<app-not-found [visible]="games.length <= 0 && searched" title="Game not found" message="Sorry, we couldn't find anything with that term.
+    Pleasy try something else" buttonText="Home">
+</app-not-found>
+
+<div class="my-8 mx-10 grid grid-cols-1 gap-y-12 md:grid-cols-2 sm:gap-x-6 xl:grid-cols-3 2xl:grid-cols-4">
     <div *ngFor="let game of games">
         <div class="relative">
             <div class="relative h-72 w-full overflow-hidden rounded-lg">
                 <a (click)="NavToGameDetail(game.gameID)">
-                    <img src={{game.imageURL}} alt={{game.description}} class="h-full w-full object-cover object-center hover:scale-110 cursor-pointer">
+                    <img src={{game.imageURL}} alt={{game.description}}
+                        class="h-full w-full object-cover object-center hover:scale-110 cursor-pointer">
                 </a>
 
             </div>

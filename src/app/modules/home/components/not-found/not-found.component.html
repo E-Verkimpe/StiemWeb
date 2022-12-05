@@ -1,0 +1,13 @@
+<main *ngIf="visible" class="mx-auto w-full flex max-w-7xl flex-grow flex-col px-4 sm:px-6 lg:px-8">
+    <div class="my-auto mx-auto flex-shrink-0 py-16 sm:py-32">
+        <p class="text-base font-semibold text-primary-500">404</p>
+        <h1 class="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">{{title}}</h1>
+        <p class="mt-2 text-base text-gray-500 whitespace-pre-line">{{message}}</p>
+        <div *ngIf="buttonText != ''" class="mt-6">
+            <a routerLink="{{routerLinkTo}}" class="text-base font-medium text-primary-500 hover:text-primary-600">
+                {{buttonText}}
+                <span aria-hidden="true"> &rarr;</span>
+            </a>
+        </div>
+    </div>
+</main>

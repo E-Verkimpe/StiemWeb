@@ -11,6 +11,7 @@ import { GameService } from '../../services/game.service';
 })
 export class GameListComponent implements OnInit {
   public games: GameDto[] = [];
+  searched: boolean = false;
 
   constructor(
     private gameService: GameService, 
@@ -22,12 +23,14 @@ export class GameListComponent implements OnInit {
   ngOnInit(): void {
     this.activeRoute.params.subscribe(params => {
       if (params.searchTerm){
+        this.searched = true;
         this.gameService.Search(params.searchTerm).subscribe(
           (result: GameDto[]) => (this.games = result));
       }
       else{
         this.gameService.GetGames().subscribe(
           (result: GameDto[]) => (this.games = result));
+          
       }
     })
   }

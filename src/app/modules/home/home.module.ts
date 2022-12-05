@@ -9,6 +9,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { CartListComponent } from './components/cart-list/cart-list.component';
 import { SearchComponent } from './components/search/search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { MatSelectModule } from '@angular/material/select'
+import { MatInputModule } from '@angular/material/input'
 
 
 @NgModule({
@@ -18,13 +22,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     NavbarComponent,
     CartListComponent,
-    SearchComponent
+    SearchComponent,
+    NotFoundComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatInputModule
   ]
 })
 export class HomeModule { }
