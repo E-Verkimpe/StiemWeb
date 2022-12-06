@@ -22,8 +22,10 @@ export class LoginComponent implements OnInit {
     const values = this.loginForm.getRawValue();
     this.authService.login({ username: values.username!, password: values.password! }).subscribe(
       (resp) => {},
-      (err) => {this.error = err.error.message}
-    );
+      (err) => {
+        if (err.status == '401'){
+          this.error = 'Login failed'
+        }});
   }
 
   ngOnInit(): void {
