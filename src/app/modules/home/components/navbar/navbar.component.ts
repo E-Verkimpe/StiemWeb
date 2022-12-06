@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +10,7 @@ export class NavbarComponent implements OnInit {
 
   public activeUser: boolean = false;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     if (sessionStorage.getItem('accesToken') !== null){
@@ -17,4 +18,11 @@ export class NavbarComponent implements OnInit {
     }
   }
 
+  Logout(){
+    sessionStorage.removeItem('accesToken')
+    this.router.navigate(['/'])
+    .then(() => {
+      window.location.reload();
+    });
+  }
 }

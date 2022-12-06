@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GameDto } from '../../Models/game-dto';
+import { Genres } from '../../Models/Genres';
 import { CartService } from '../../services/cart.service';
 import { GameService } from '../../services/game.service';
 
@@ -12,6 +13,7 @@ import { GameService } from '../../services/game.service';
 export class GameListComponent implements OnInit {
   public games: GameDto[] = [];
   searched: boolean = false;
+  genres: string[] = Genres;
 
   constructor(
     private gameService: GameService, 
@@ -25,6 +27,11 @@ export class GameListComponent implements OnInit {
       if (params.searchTerm){
         this.searched = true;
         this.gameService.Search(params.searchTerm).subscribe(
+          (result: GameDto[]) => (this.games = result));
+      }
+      else if (params.genreTerm){
+        this.searched = true;
+        this.gameService.GetGamesByGenre(params.genreTerm).subscribe(
           (result: GameDto[]) => (this.games = result));
       }
       else{
