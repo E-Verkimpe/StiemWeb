@@ -17,9 +17,7 @@ export class GameListComponent implements OnInit {
 
   constructor(
     private gameService: GameService, 
-    private router: Router, 
     private activeRoute: ActivatedRoute, 
-    private cartService: CartService
     ) { }
 
   ngOnInit(): void {
@@ -41,13 +39,4 @@ export class GameListComponent implements OnInit {
       }
     })
   }
-
-  public NavToGameDetail(id: number){
-    this.router.navigate(["/home/game/" + id])
-  }
-
-  public AddToCart(gameID: number){
-    this.cartService.AddToCart(gameID);
-  }
-
 }
