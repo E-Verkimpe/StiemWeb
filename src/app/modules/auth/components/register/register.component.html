@@ -3,7 +3,8 @@
         <h2 class="mt-6 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Create your account</h2>
         <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
             Or
-            <a routerLink="/auth/login" class="font-medium text-primary-500 hover:text-primary-600">sign in to your account</a>
+            <a routerLink="/auth/login" class="font-medium text-primary-500 hover:text-primary-600">sign in to your
+                account</a>
         </p>
     </div>
     <div class="mt-8">
@@ -12,40 +13,59 @@
                 <div class="space-y-1">
                     <label for="userInput"
                         class="block text-sm font-medium text-gray-700 dark:text-gray-200">Username</label>
-                    <input 
-                        formControlName="username" 
-                        id="userInput" 
-                        type="text" 
-                        placeholder="User123"
+                    <input formControlName="username" id="userInput" type="text" placeholder="User123"
                         class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-primary-500 sm:text-sm" />
+
+                    <div *ngIf="registerForm.controls.username.invalid && (registerForm.controls.username.dirty || registerForm.controls.username.touched)"
+                        class="text-red-600">
+                        <div *ngIf="registerForm.controls.username.errors?.required">
+                            Name is required.
+                        </div>
+                    </div>
                 </div>
                 <div class="space-y-1">
-                    <label for="email"
-                        class="block text-sm font-medium text-gray-700 dark:text-gray-200">Email</label>
-                    <input 
-                        formControlName="email" 
-                        id="email" 
-                        type="email" 
-                        placeholder="example@domain.com"
+                    <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Email</label>
+                    <input formControlName="email" id="email" type="email" placeholder="example@domain.com"
                         class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-primary-500 sm:text-sm" />
+
+                    <div *ngIf="registerForm.controls.email.invalid && (registerForm.controls.email.dirty || registerForm.controls.email.touched)"
+                        class="text-red-600">
+                        <div *ngIf="registerForm.controls.email.errors?.required">
+                            Email is required.
+                        </div>
+                        <div *ngIf="registerForm.controls.email.errors?.email">
+                            Incorrect email type.
+                        </div>
+                    </div>
                 </div>
                 <div class="space-y-1">
                     <label for="password"
                         class="block text-sm font-medium text-gray-700 dark:text-gray-200">Password</label>
-                    <input 
-                        formControlName="password" 
-                        id="password" 
-                        name="password" 
-                        type="password"
-                        autocomplete="new-password" 
-                        placeholder="••••••••"
+                    <input formControlName="password" id="password" name="password" type="password"
+                        autocomplete="new-password" placeholder="••••••••"
                         class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-primary-500 sm:text-sm" />
+
+                    <div *ngIf="registerForm.controls.password.invalid && (registerForm.controls.password.dirty || registerForm.controls.password.touched)"
+                        class="text-red-600">
+                        <div *ngIf="registerForm.controls.password.errors?.required">
+                            Password is required.
+                        </div>
+                        <div *ngIf="registerForm.controls.password.errors?.pattern">
+                            <p class="whitespace-pre-line">
+                                Password must be atleast 6 charachters long. <br>
+                                Password must contain atleast 1 number. <br>
+                                Password must contain atleast 1 lowercase letter. <br>
+                                Password must contain atleast 1 uppercase letter. <br>
+                                Password must contain atleast 1 special character. <br>
+                            </p>
+                        </div>
+                    </div>
                 </div>
                 <div>
                     <div *ngIf="!registerForm.valid">
-                        <p class="text-red-900 font-bold text-center pb-3">Please fill out the form</p>
+                        <p class="text-red-600 text-center pb-3">Please fill out the form</p>
                     </div>
-                    <div *ngIf="error" class="text-center text-red-900 font-bold pb-3">
+                    <div *ngIf="error" class="text-center text-red-600 pb-3">
                         {{error}}
                     </div>
                     <button type="submit" [disabled]="!registerForm.valid"
@@ -53,6 +73,7 @@
                         Sign up
                     </button>
                 </div>
+
             </form>
         </div>
     </div>

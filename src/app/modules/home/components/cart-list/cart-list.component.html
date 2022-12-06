@@ -5,8 +5,10 @@
     </div>
     <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
       <button (click)="ClearCart()" type="button"
-        class="inline-flex items-center justify-center rounded-md border border-transparent bg-primary-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 sm:w-auto">Clear
+        class="inline-flex mx-2 items-center justify-center rounded-md border border-transparent bg-primary-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 sm:w-auto">Clear
         Cart</button>
+      <button (click)="ClearCart()" type="button"
+        class="inline-flex mx-2 items-center justify-center rounded-md border border-transparent bg-primary-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 sm:w-auto">BUY!</button>
     </div>
   </div>
   <div *ngIf="cart.games.length; else elseBlock" class="-mx-4 mt-8 flex overflow-x-auto flex-col sm:-mx-6 md:mx-0">
@@ -29,7 +31,7 @@
           <td class="py-4 px-3 text-right text-sm text-gray-500">{{game.platform}}</td>
           <td class="py-4 px-3 text-right text-sm text-gray-500">€{{game.price}}</td>
           <td class="py-5 pl-3 pr-4 flex justify-center text-xl text-red-700 sm:pr-6 md:pr-0 font-bold">
-            <a (click)="RemoveSingleGame(game.gameID)" class="cursor-pointer">
+            <a (click)="RemoveSingleGame(game.gameID)" class="cursor-pointer hover:scale-110">
               <img src="https://cdn-icons-png.flaticon.com/512/1632/1632708.png" alt="remove from cart" class="h-4 w-4">
             </a>
           </td>

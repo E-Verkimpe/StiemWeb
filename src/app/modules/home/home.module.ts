@@ -12,7 +12,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MatSelectModule } from '@angular/material/select'
-import { MatInputModule } from '@angular/material/input'
+import { MatInputModule } from '@angular/material/input';
+import { GameCardComponent } from './components/game-card/game-card.component'
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { MatInputModule } from '@angular/material/input'
     CartListComponent,
     SearchComponent,
     NotFoundComponent,
-    FooterComponent
+    FooterComponent,
+    GameCardComponent
   ],
   imports: [
     CommonModule,
