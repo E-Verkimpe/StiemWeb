@@ -27,6 +27,10 @@ export class GameListComponent implements OnInit {
         this.gameService.Search(params.searchTerm).subscribe(
           (result: GameDto[]) => (this.games = result));
       }
+      else if (params.genreTerm){
+        this.gameService.GetGamesByGenre(params.genreTerm).subscribe(
+          (result: GameDto[]) => (this.games = result));
+      }
       else{
         this.gameService.GetGames().subscribe(
           (result: GameDto[]) => (this.games = result));
