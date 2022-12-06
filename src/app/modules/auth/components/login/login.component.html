@@ -37,15 +37,6 @@
               <div *ngIf="loginForm.controls.password.errors?.required">
                 Password is required.
               </div>
-              <div *ngIf="loginForm.controls.password.errors?.pattern">
-                <p class="whitespace-pre-line">
-                  Password must contain atleast 1 number. <br>
-                  Password must be atleast 6 charachters long. <br>
-                  Password must contain atleast 1 lowercase letter. <br>
-                  Password must contain atleast 1 uppercase letter. <br>
-                  Password must contain atleast 1 special character. <br>
-                </p>
-              </div>
             </div>
           </div>
         </div>
